@@ -1,4 +1,3 @@
-import { ClassNames } from '@emotion/react';
 import { Typography, Card, CardActionArea, CardMedia } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import useStyles from './styles';
@@ -44,8 +43,8 @@ function Slider() {
                     return (
                         <div style={{ objectFit: "contain" }}>
                             <Card sx={{ margin: "0.4vw" }} >
-                                <CardActionArea style={{ width: "14vw"}}>
-                                    <CardMedia style={{ height: "20vh" , objectFit: "cover"}}
+                                <CardActionArea style={{ width: "12vw"}}>
+                                    <CardMedia style={{ height: "30vh" , objectFit: "fill"}}
                                         component="img"
                                         image={"https://image.tmdb.org/t/p/w500" + val.poster_path}
                                         alt="Movie images"

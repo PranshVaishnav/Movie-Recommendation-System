@@ -7,7 +7,7 @@ export default makeStyles(()=>({
     },
     nav:{
         width:"1vw",
-        marginLeft:"10%",
+        marginLeft:"2%",
     }
     ,
     navlink:{

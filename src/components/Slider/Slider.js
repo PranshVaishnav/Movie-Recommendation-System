@@ -7,15 +7,15 @@ import axios from "axios";
 
 
 
-function Slider() {
-
+function Slider(props) {
+    
     const [movies, setData] = useState([]);
 
 
     const API_KEY = "7d3ee70236936a31c481de168f21b597";
     const BASE_URL = "https://api.themoviedb.org/3";
 
-    const url = BASE_URL + "/movie/popular?api_key=" + API_KEY + "&language=en-US";
+    const url = BASE_URL + props.start+ "?api_key=" + API_KEY + props.end;
 
     const getmovie = () => {
         axios.get(url)
@@ -36,8 +36,8 @@ function Slider() {
 
     const classes = useStyles();
     return (
-        <>
-            <Typography variant="h2" sx={{ marginTop: "5vh", marginBottom: "2vh", fontWeight: "bold", fontSize: "3.4vh", color: "white" }}>UPCOMING</Typography>
+        <div className={classes.SliderSec}>
+            <Typography variant="h2" sx={{ marginTop: "5vh", marginBottom: "2vh", fontWeight: "bold", fontSize: "3.4vh", color: "white" }}>{props.title}</Typography>
             <div className={classes.hideScroll} style={{ display: "flex", overflowY: "hidden", overflowX: "scroll" }}>
                 {movies.map((val) => {
                     return (
@@ -56,7 +56,7 @@ function Slider() {
                 })
                 }
             </div>
-        </>
+        </div>
     )
 }
 

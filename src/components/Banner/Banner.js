@@ -6,13 +6,12 @@ import { Button, Typography } from '@mui/material';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import InfoIcon from '@mui/icons-material/Info';
 
-
 const Banner = () => {
 
     const classes = useStyles();
 
     const [banner, setBanner] = useState({});
-
+    const [showBanner,setShowBanner]=useState(0);
 
     const API_KEY = "7d3ee70236936a31c481de168f21b597";
     const BASE_URL = "https://api.themoviedb.org/3";
@@ -31,6 +30,10 @@ const Banner = () => {
             });
     };
 
+    const showCard=()=>{
+       setShowBanner(1-showBanner);
+    }
+
     useEffect(() => {
         getBannerMovie();
     }, [])
@@ -40,12 +43,12 @@ const Banner = () => {
         <div className={classes.Banner} >
             <img className={classes.Image} alt="poster" src={"https://image.tmdb.org/t/p/original/" + banner.poster_path} ></img>
             <div className={classes.BImageDetails}>
-                <div><Typography variant="h5">{banner.title}</Typography></div>
+                <div><Typography sx={{fontWeight:"520"}} variant="h3">{banner.title}</Typography></div>
                 <div  style={{marginTop:"10px"}}><Typography variant="p">{banner.overview?banner.overview.slice(0,120)+`...`:''}</Typography></div>
                 <div style={{marginTop:"10px"}}><Button size="large" variant="contained" startIcon={<PlayArrowIcon />} style={{backgroundColor:"white",color:"black",width:"160px",marginRight:"15px"}} >
                      Play
                     </Button>
-                    <Button size="large"  variant="contained" endIcon={<InfoIcon />} style={{backgroundColor:"#6d6d6db3",width:"160px"}}>
+                    <Button size="large" onClick={showCard}  variant="contained" endIcon={<InfoIcon />} style={{backgroundColor:"#6d6d6db3",width:"160px"}}>
                         More Info
                     </Button>
                 </div>

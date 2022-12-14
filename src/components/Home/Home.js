@@ -1,4 +1,5 @@
 import React from 'react'
+import BannerCard from '../Banner/BannerCard/BannerCard';
 import Footer from '../Footer/Footer';
 import SimpleSlider from '../Slider/Slider';
 
@@ -20,6 +21,9 @@ function Home() {
   return (
     <>
       <div style={{ position: "absolute", top: "550px", left: 0, width: "100%" }}>
+        {
+          //(showBanner) ? <BannerCard title={banner.title} image={"https://image.tmdb.org/t/p/original/" + banner.poster_path} genre={banner.genre_ids} description={banner.overview} /> : null
+        }
         <SimpleSlider title="Popular on NextFlix" start="/movie/popular" end=""></SimpleSlider>
         <SimpleSlider title="Horror Movies" start="/discover/movie" end="&with_genres=27"></SimpleSlider>
         <SimpleSlider title="Trending Now" start="/trending/all/day" end=""></SimpleSlider>

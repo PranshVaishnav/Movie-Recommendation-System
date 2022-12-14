@@ -9,7 +9,6 @@ import Series from './components/Series/Series';
 import Popular from './components/Popular/Popular';
 import Trend from './components/Trend/Trend';
 import Banner from './components/Banner/Banner';
-
 import "./index.css"
 
 function App() {

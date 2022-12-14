@@ -36,9 +36,9 @@ function Slider(props) {
 
     const classes = useStyles();
     return (
-        <div className={classes.SliderSec}>
+        <div style={{zIndex:"-1"}}>
             <Typography variant="h2" sx={{ marginTop: "5vh", marginBottom: "2vh", fontWeight: "bold", fontSize: "3.4vh", color: "white" }}>{props.title}</Typography>
-            <div className={classes.hideScroll} style={{ display: "flex", overflowY: "hidden", overflowX: "scroll" }}>
+            <div style={{ display: "flex", overflowY: "hidden", overflowX: "scroll" }}>
                 {movies.map((val) => {
                     return (
                         <div style={{ objectFit: "contain" }}>

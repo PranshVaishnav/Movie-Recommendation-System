@@ -26,8 +26,9 @@ export default makeStyles(()=>({
                 flexDirection:"column",
                 width:"500px",
                 position:"absolute",
-                top:"380px",
+                top:"300px",
                 left:"100px",
                 zIndex:1,
+                
         }
 }));

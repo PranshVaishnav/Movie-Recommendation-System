@@ -16,14 +16,17 @@ import SimpleSlider from '../Slider/Slider';
   Drama           /discover/movie  &with_genres=18
 */
 
-
-function Home() {
+function Home(props) {
+   
+  
   return (
     <>
-      <div style={{ position: "absolute", top: "550px", left: 0, width: "100%" }}>
+      <div style={{ position: "absolute", top: "550px", left: 0,width: "100%" }}>
+   
         {
-          //(showBanner) ? <BannerCard title={banner.title} image={"https://image.tmdb.org/t/p/original/" + banner.poster_path} genre={banner.genre_ids} description={banner.overview} /> : null
+          (props.hook) ? <BannerCard /> : null
         }
+   
         <SimpleSlider title="Popular on NextFlix" start="/movie/popular" end=""></SimpleSlider>
         <SimpleSlider title="Horror Movies" start="/discover/movie" end="&with_genres=27"></SimpleSlider>
         <SimpleSlider title="Trending Now" start="/trending/all/day" end=""></SimpleSlider>

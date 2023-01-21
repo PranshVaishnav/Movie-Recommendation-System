@@ -9,17 +9,34 @@ import Series from './components/Series/Series';
 import Popular from './components/Popular/Popular';
 import Trend from './components/Trend/Trend';
 import Banner from './components/Banner/Banner';
+import { useState,useEffect } from 'react';
 import "./index.css"
 
 function App() {
+
+  const[showBanner,setShowBanner]=useState(0);
+
+  const [bright,setBright]=useState('brightness(100%)');
+
+  useEffect(()=>{
+      if(showBanner){
+        setBright("brightness(50%)");
+        }
+        else
+        {
+          setBright("brightness(100%)");
+        }
+    }
+    );
+
   const classes = useStyles();
   return (
     <BrowserRouter>
-    <Navbar/>
-    <Banner/>
+    <div style={{filter:`${bright}`}}><Navbar/></div>
+    <Banner  hook={showBanner} func={setShowBanner}/>
       <Container maxWidth='xl'>
         <Routes>
-          <Route path='/' exact element={<Home/>}/> 
+          <Route path='/' exact element={<Home hook={showBanner} func={setShowBanner}/>}/> 
           <Route path='/movies' exact element={<Movies/>}/>
           <Route path='/series' exact element={<Series/>}/>
           <Route path='/popular' exact element={<Popular/>}/>

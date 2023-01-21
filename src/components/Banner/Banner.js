@@ -6,12 +6,12 @@ import { Button, Typography } from '@mui/material';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import InfoIcon from '@mui/icons-material/Info';
 
-const Banner = () => {
-
+const Banner = (props) => {
+    
+    
     const classes = useStyles();
 
     const [banner, setBanner] = useState({});
-    const [showBanner,setShowBanner]=useState(0);
 
     const API_KEY = "7d3ee70236936a31c481de168f21b597";
     const BASE_URL = "https://api.themoviedb.org/3";
@@ -31,7 +31,7 @@ const Banner = () => {
     };
 
     const showCard=()=>{
-       setShowBanner(1-showBanner);
+      props.func(1-props.hook);
     }
 
     useEffect(() => {

@@ -6,11 +6,36 @@ import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
+import PlayArrowIcon from '@mui/icons-material/PlayArrow';
+import axios from 'axios';
 
-
-const BannerCard = (props) => {
+const BannerCard = () => {
 
     const classes = useStyles();
+
+    const [banner, setBanner] = useState({});
+
+    const API_KEY = "7d3ee70236936a31c481de168f21b597";
+    const BASE_URL = "https://api.themoviedb.org/3";
+
+    const url = BASE_URL + "/trending/all/day?api_key=" + API_KEY;
+
+    const getBannerMovie = () => {
+        axios.get(url)
+            .then((response) => {
+                console.log(response.data.results[2]);
+                setBanner(response.data.results[2]);
+            })
+            .catch((e) => {
+                console.log("Error");
+                setBanner({});
+            });
+    };
+
+    useEffect(() => {
+        getBannerMovie();
+    }, [])
+
 
     const genre = {
         "28": "Action",
@@ -36,25 +61,31 @@ const BannerCard = (props) => {
 
 
     return (
-        <Card sx={{ minWidth: 921, position:"fixed" ,top:"100px",left:"320px",zIndex:1}}>
+        <Card sx={{ minWidth:'55%' ,maxWidth:"60%",position: "fixed", top: "100px", left: "25vw", zIndex: 1,backgroundColor:'#141414',backgroundBlendMode: 'lighten' }}>
             <CardMedia
                 component="img"
-                height="447"
-                image={props.image}
+                height="350"
+                image={"https://image.tmdb.org/t/p/original/" + banner.poster_path} 
                 alt="green iguana"
+                sx={{WebkitMaskImage: '-webkit-linear-gradient(top,#141414 36%,transparent)'}}
             />
-            <CardContent>
-                <Typography gutterBottom variant="h5" component="div">
-                    {props.title}
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                   {props.desciption}
-                </Typography>
-            </CardContent>
+
             <CardActions>
-                <Button size="small">PLay</Button>
-                <Button size="small">Learn More</Button>
+            <Button size="large" variant="contained" startIcon={<PlayArrowIcon />} style={{backgroundColor:"white",color:"black",width:"160px",marginRight:"15px"}} >
+                     Play
+                    </Button>
             </CardActions>
+            <CardContent>
+                <Typography gutterBottom  color="white" variant="h5" component="div">
+                    {banner.title}
+                </Typography>
+                <div style={{width:'30vw'}}>
+                <Typography variant="p" color="white" sx={{textAlign:'left'}} >
+                    {banner.overview}
+                </Typography>
+                </div>
+            </CardContent>
+           
         </Card>
     )
 }

@@ -8,8 +8,11 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import axios from 'axios';
+import CancelRoundedIcon from '@mui/icons-material/CancelRounded';
 
-const BannerCard = () => {
+const BannerCard = (props) => {
+
+    
 
     const classes = useStyles();
 
@@ -58,37 +61,51 @@ const BannerCard = () => {
         "10752": "War",
         "37": "Western",
     }
+  
+   const closeDialog=()=>{
+           props.func(1-props.hook);
+    }
 
-    
+    const backColor=['#ffffff','#141414b3']
+
+    const[clr,setClr]=useState(0);
+
+    const changeColor=()=>{
+       setClr(1-clr);
+    }
+
 
     return (
-        
-        <Card sx={{ minWidth:'55%' ,maxWidth:"60%",position: "fixed", top: "100px", left: "25vw", zIndex: 1,backgroundColor:'#141414',backgroundBlendMode: 'lighten' }}>
-            <CardMedia
-                component="img"
-                height="350"
-                image={"https://image.tmdb.org/t/p/original/" + banner.poster_path} 
-                alt="green iguana"
-                sx={{WebkitMaskImage: '-webkit-linear-gradient(top,#141414 36%,transparent)'}}
-            />
-
-            <CardActions>
-            <Button size="large" variant="contained" startIcon={<PlayArrowIcon />} style={{backgroundColor:"white",color:"black",width:"160px",marginRight:"15px"}} >
-                     Play
-                    </Button>
-            </CardActions>
-            <CardContent>
-                <Typography gutterBottom  color="white" variant="h5" component="div">
-                    {banner.title}
-                </Typography>
-                <div style={{width:'30vw'}}>
-                <Typography variant="p" color="white" sx={{textAlign:'left'}} >
-                    {banner.overview}
-                </Typography>
-                </div>
-            </CardContent>
+        <>
            
-        </Card>
+            <Card sx={{ minWidth: '55%', maxWidth: "60%", position: "fixed", top: "100px", left: "25vw", zIndex: 1, backgroundColor: '#141414', backgroundBlendMode: 'lighten' }}>
+            <CancelRoundedIcon fontSize='large'  onMouseOver={changeColor} onMouseOut={changeColor}  style={{color:`${backColor[clr]}`,top:'1vw',right:'1vw',zIndex:'3',position:'absolute',transition: '0.3s'}} onClick={closeDialog}/>
+                <CardMedia
+                    component="img"
+                    height="350"
+                    image={"https://image.tmdb.org/t/p/original/" + banner.poster_path}
+                    alt="green iguana"
+                    sx={{ WebkitMaskImage: '-webkit-linear-gradient(top,#141414 36%,transparent)' }}
+                />
+
+                <CardActions>
+                    <Button size="large" variant="contained" startIcon={<PlayArrowIcon />} style={{ backgroundColor: "white", color: "black", width: "160px", marginRight: "15px" }} >
+                        Play
+                    </Button>
+                </CardActions>
+                <CardContent>
+                    <Typography gutterBottom color="white" variant="h5" component="div">
+                        {banner.title}
+                    </Typography>
+                    <div style={{ width: '30vw' }}>
+                        <Typography variant="p" color="white" sx={{ textAlign: 'left' }} >
+                            {banner.overview}
+                        </Typography>
+                    </div>
+                </CardContent>
+
+            </Card>
+        </>
     )
 }
 

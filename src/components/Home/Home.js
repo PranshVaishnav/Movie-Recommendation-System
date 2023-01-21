@@ -23,7 +23,7 @@ function Home(props) {
     <>
       <div style={{ zIndex:'2',position: "absolute", top: "2vh", left: '-10vw',width: "100%"}}>
         {
-          (props.hook) ? <BannerCard /> : null
+          (props.hook) ? <BannerCard hook={props.hook} func={props.func}/> : null
         }
         </div>
         <div style={{ position: "relative", top: "550px", left: 0,width: "100%",filter:`${props.filt}` }}>

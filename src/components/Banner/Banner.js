@@ -40,7 +40,7 @@ const Banner = (props) => {
 
 
     return (
-        <div className={classes.Banner} >
+        <div style={{filter:`${props.filt}`}} className={classes.Banner} >
             <img className={classes.Image} alt="poster" src={"https://image.tmdb.org/t/p/original/" + banner.poster_path} ></img>
             <div className={classes.BImageDetails}>
                 <div><Typography sx={{fontWeight:"520"}} variant="h3">{banner.title}</Typography></div>

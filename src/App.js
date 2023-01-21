@@ -32,11 +32,11 @@ function App() {
   const classes = useStyles();
   return (
     <BrowserRouter>
-    <div style={{filter:`${bright}`}}><Navbar/></div>
-    <Banner  hook={showBanner} func={setShowBanner}/>
+    <Navbar filt={bright}/>
+    <Banner  hook={showBanner} func={setShowBanner}  filt={bright}/>
       <Container maxWidth='xl'>
         <Routes>
-          <Route path='/' exact element={<Home hook={showBanner} func={setShowBanner}/>}/> 
+          <Route path='/' exact element={<Home hook={showBanner} func={setShowBanner} filt={bright}/>}/> 
           <Route path='/movies' exact element={<Movies/>}/>
           <Route path='/series' exact element={<Series/>}/>
           <Route path='/popular' exact element={<Popular/>}/>

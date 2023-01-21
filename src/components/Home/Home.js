@@ -21,12 +21,12 @@ function Home(props) {
   
   return (
     <>
-      <div style={{ position: "absolute", top: "550px", left: 0,width: "100%" }}>
-   
+      <div style={{ zIndex:'2',position: "absolute", top: "2vh", left: '-10vw',width: "100%"}}>
         {
           (props.hook) ? <BannerCard /> : null
         }
-   
+        </div>
+        <div style={{ position: "relative", top: "550px", left: 0,width: "100%",filter:`${props.filt}` }}>
         <SimpleSlider title="Popular on NextFlix" start="/movie/popular" end=""></SimpleSlider>
         <SimpleSlider title="Horror Movies" start="/discover/movie" end="&with_genres=27"></SimpleSlider>
         <SimpleSlider title="Trending Now" start="/trending/all/day" end=""></SimpleSlider>
@@ -36,7 +36,7 @@ function Home(props) {
         <SimpleSlider title="Animation" start="/discover/movie" end="&with_genres=16"></SimpleSlider>
         <SimpleSlider title="Drama" start="/discover/movie" end="&with_genres=18"></SimpleSlider>
         <Footer></Footer>
-      </div>
+        </div>
     </>
   )
 }

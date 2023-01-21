@@ -53,7 +53,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     },
 }));
 
-function Navbar() {
+function Navbar(props) {
     const classes = useStyles();
     const [bgcolor, setColor] = useState("transparent");
 
@@ -74,7 +74,7 @@ function Navbar() {
 
 
     return (
-        <AppBar style={{ background: `${bgcolor}`, boxShadow: 'none', width: "100%", position: "fixed", top: 0 }} overflow="hidden">
+        <AppBar style={{ filter:`${props.filt}`, background: `${bgcolor}`, boxShadow: 'none', width: "100%", position: "fixed", top: 0 }} overflow="hidden">
             <Container maxWidth="xl" style={{ padding: "0" }} >
                 <Toolbar disableGutters>
                     <img src={logo} alt="Nextflix" style={{ marginLeft: "2%", width: "10vw", height: "3vh" }} />

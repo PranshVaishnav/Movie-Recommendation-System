@@ -59,8 +59,10 @@ const BannerCard = () => {
         "37": "Western",
     }
 
+    
 
     return (
+        
         <Card sx={{ minWidth:'55%' ,maxWidth:"60%",position: "fixed", top: "100px", left: "25vw", zIndex: 1,backgroundColor:'#141414',backgroundBlendMode: 'lighten' }}>
             <CardMedia
                 component="img"
